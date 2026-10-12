@@ -1,5 +1,6 @@
 package tn.esprit.tp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,10 +37,10 @@ public class Contrat {
     private boolean valide;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "reservation_id", nullable = false, unique = true)
     private Reservation reservation;
 
     // Composition : les paiements appartiennent au cycle de vie du contrat.
+    @JsonIgnore
     @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Paiement> paiements = new ArrayList<>();
 }

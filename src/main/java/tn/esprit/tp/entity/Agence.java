@@ -1,5 +1,6 @@
 package tn.esprit.tp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,9 +32,11 @@ public class Agence {
 
     private String telephone;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "agence")
     private List<Employe> employes = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "agence")
     private List<Vehicule> vehicules = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package tn.esprit.tp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -37,13 +38,12 @@ public class Reservation {
     private StatutReservation statut;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "vehicule_id", nullable = false)
     private Vehicule vehicule;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "reservation")
     private Contrat contrat;
 }

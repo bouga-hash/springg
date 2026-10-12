@@ -1,5 +1,6 @@
 package tn.esprit.tp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +38,7 @@ public class Client {
 
     private LocalDate dateInscription;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations = new ArrayList<>();
 }
